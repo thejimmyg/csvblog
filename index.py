@@ -10,7 +10,7 @@ import whoosh.index
 from search_common import * 
 from fastcsv import lex, headers_from_csv
 
-csv = os.path.join(WEBROOT, 'new.csv')
+csv = os.path.join(WEBROOT, 'data.16.csv')
 headers, length = headers_from_csv(csv)
 rows = []
 def row_callback(row, end_pos):
