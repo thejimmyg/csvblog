@@ -1,0 +1,10 @@
+"Name","Title","Date","Content","Content[md]","Content[md]>","HTMLTemplate","HTMLTemplate>","Tags"
+"html_content","HTML Content","2012-09-25","<p>Just a quick note to say <b>&quot;hi&quot;</b>. What do you think of this? Pretty neat huh?.</p>",,," ","template.pystr","one"
+"html_template","HTML Template","2012-09-26","<p>This has been <b>""edited in a spreadsheet” </b>and it works!</b>.</p>",,,"<html>
+<body>From template text
+<h1>%(Heading)s</h1>
+%(Content)s
+</body>
+</html>",,"one, two"
+"markdown_content","Markdown Content","2012-09-27",,"Hi there *visitor*!",,,"template.pystr","one, two, three"
+"markdown_file","Markdown File","2012-09-28",,,"markdown.md",,"template.pystr","two, three, four"

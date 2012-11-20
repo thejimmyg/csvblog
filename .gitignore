@@ -1,5 +1,14 @@
 *.py[cod]
 
+# Test files
+bigtest.csv
+
+# Search index
+indexdir
+
+# Dependencies
+fastcsv.py
+
 # C extensions
 *.so
 

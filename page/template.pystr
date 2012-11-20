@@ -1,0 +1,47 @@
+<html>
+<head><title>%(Title)s</title>
+<style>
+body {
+    width: 80%%;
+    font-family: "rooney-web","ff-tisa-web-pro",Georgia,"bitstream vera serif",Times,serif;
+    margin: 20px auto;
+}
+h1, h2, h3, h4, h5, h6 {
+    font-family: sans-serif;
+    color: #000000;
+    font-weight: normal;
+    letter-spacing: -0.03em;
+    line-height: 100%%;
+}
+</style>
+</head>
+<body>
+<h1>%(Heading)s</h1>
+%(Content)s
+
+<div id="related"></div>
+<script type="text/javascript">
+window.onload = function() {
+    var xmlhttp;
+    if (window.XMLHttpRequest) {
+        // code for IE7+, Firefox, Chrome, Opera, Safari
+        xmlhttp=new XMLHttpRequest();
+    } else {
+        // code for IE6, IE5
+        xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+    }
+    xmlhttp.onreadystatechange=function() {
+        if (xmlhttp.readyState==4 && xmlhttp.status==200) {
+            document.getElementById("related").innerHTML=xmlhttp.responseText;
+        }
+    }
+    xmlhttp.open("GET","/search?q=%(TagQuery)s",true);
+    // setRequestHeader(header,value)
+    // xmlhttp.send(data);
+    xmlhttp.send();
+}; 
+</script>
+
+</body>
+</html>
+
