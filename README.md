@@ -22,7 +22,7 @@ wget https://raw.github.com/thejimmyg/fastcsv/master/fastcsv.py
 
 ## Getting Started
 
-Read the `index.html` file for instructions on the example.
+Read the `page/index.html` file for instructions on the example.
 
 After following the instructions in index.html you can also search from the command line like this:
 

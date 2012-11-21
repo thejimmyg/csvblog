@@ -7,6 +7,8 @@ from search import search
 from urlparse import parse_qs
 from fastcsv import find_row, headers_from_csv
 
+from search_common import WEBROOT, PORT
+
 class QueryError(Exception):
     def __init__(self, msg):
         Exception.__init__(self, msg)
@@ -152,7 +154,7 @@ def query_app(environ, start_response):
         query_string = environ.get('QUERY_STRING', '')
         status = '200 OK'
         content_type = 'text/html'
-        body = '<h2>Related Articles</h2><ul>'
+        body = '<ul>'
         p = parse_qs(query_string.decode('utf8'))
         body += search(p.get('q', [''])[0].decode('utf8'))
         body += '</ul>'
@@ -167,7 +169,7 @@ def query_app(environ, start_response):
         content_type = 'text/plain'
         try:
             result, format = query(
-                '.',
+                WEBROOT,
                 path,
                 default_format, ['json', 'html'],
                 csvfile='data.16.csv',
@@ -188,13 +190,13 @@ def query_app(environ, start_response):
     start_response(status, [('Content-type', content_type+'; charset=utf8'), ('Content-Length', str(len(body)))])
     return [body]
 
-static_app = StaticURLParser("./")
+static_app = StaticURLParser(WEBROOT)
 # Create a cascade that looks for static files first, then tries the web app
 app = Cascade([static_app, query_app])
 
 def main():
-    httpd = make_server('', 8000, app)
-    print "Serving HTTP on port 8000..."
+    httpd = make_server('', PORT, app)
+    print "Serving HTTP from %r on port %s..."%(WEBROOT, PORT,)
     # Respond to requests until process is killed
     httpd.serve_forever()
 

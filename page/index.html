@@ -1,0 +1,61 @@
+<html>
+<head>
+<title>CSVBlog Examples</title>
+</head>
+<body>
+
+<h1>CSVBlog Examples</h1>
+
+<p>First follow the install instructions in the <tt>README.md</tt> to install the dependencies and get the <tt>fastcsv.py</tt> file.</p>
+
+<p>Then index the data with:</p>
+<pre>
+mkdir indexdir
+python index.py
+</pre>
+
+<p>Start the server:</p>
+
+<pre>
+python server.py
+</pre>
+
+<p>Then visit these pages served from the <tt>data.16.csv</tt> file:</p>
+
+<ul>
+<li><a href="html_content.html">HTML Content</a></li>
+<li><a href="html_template.html">HTML Template</a></li>
+<li><a href="markdown_content.html">Markdown Content</a></li>
+<li><a href="markdown_file.html">Markdown File</a></li>
+</ul>
+
+<div id="all">
+<noscript><p><a href="/search?q=*">See a list of all posts.</a></p></noscript>
+</div>
+
+<script type="text/javascript">
+window.onload = function() {
+    var xmlhttp;
+    if (window.XMLHttpRequest) {
+        // code for IE7+, Firefox, Chrome, Opera, Safari
+        xmlhttp=new XMLHttpRequest();
+    } else {
+        // code for IE6, IE5
+        xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+    }
+    xmlhttp.onreadystatechange=function() {
+        if (xmlhttp.readyState==4 && xmlhttp.status==200) {
+            document.getElementById("all").innerHTML='<h2>All Posts</h2>'+xmlhttp.responseText;
+        }
+    }
+    xmlhttp.open("GET","/search?q=*",true);
+    // setRequestHeader(header,value)
+    // xmlhttp.send(data);
+    xmlhttp.send();
+}; 
+</script>
+
+
+
+</body>
+</html>
